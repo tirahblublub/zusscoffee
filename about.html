@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZUS Coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --clr-primary: #001f5b;
+      --clr-accent: #2a4cff;
+      --clr-bg: #f8f9fc;
+      --clr-white: #ffffff;
+      --shadow-sm: 0 2px 10px rgba(0, 0, 0, .08);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, .1);
+      --radius: 10px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--clr-bg);
+      color: var(--clr-primary);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--clr-primary);
+      font-weight: 400;
+      transition: 0.3s;
+    }
+
+    a:hover,
+    .nav-links a:hover,
+    .dropdown-content a:hover {
+      color: var(--clr-accent);
+      font-weight: 400 !important;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo img {
+      height: 150px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #001f5b;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #007BFF;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      border-radius: 6px;
+      min-width: 180px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #001f5b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .nav-item:hover .dropdown-content {
+      display: block;
+    }
+
+    .hero {
+      background: url('storyback.jpg') center/cover no-repeat;
+      height: 70vh;
+    }
+
+    .gallery-outer {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .gallery-wrapper {
+      display: flex;
+      gap: 1rem;
+      padding: 3rem 2rem;
+      animation: scroll 40s linear infinite;
+    }
+
+    @keyframes scroll {
+      to {
+        transform: translateX(calc(-260px * 10));
+      }
+    }
+
+    .gallery-card {
+      flex: 0 0 250px;
+      height: 350px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tagline {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .story {
+      padding: 0 2rem 3rem;
+      text-align: center;
+    }
+
+    .story p {
+      margin: 0 auto 1.2rem;
+      font-size: 1.05rem;
+      max-width: 60ch;
+    }
+
+    .collab {
+      padding: 50px 20px;
+      text-align: center;
+      background: var(--clr-white);
+    }
+
+    .collab-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1550px;
+      margin: auto;
+    }
+
+    .collab-card {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .collab-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: scale 0.3s;
+    }
+
+    .collab-card::after {
+      content: attr(data-name);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .collab-card:hover {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .collab-card:hover::after {
+      opacity: 1;
+    }
+
+    .collab-card:hover img {
+      scale: 1.08;
+    }
+
+    footer {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="homepage.html"><img src="img5.png" alt="ZUS Logo" /></a>
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="about.html">About</a>
+        <div class="dropdown-content">
+          <a href="story.html">Our Story</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="products.html">Products</a>
+        <div class="dropdown-content">
+          <a href="menu.html">Menu</a>
+          <a href="merchandise.html">Merchandise</a>
+        </div>
+      </li>
+      <li><a href="location.html">Location</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" aria-label="ZUS Coffee banner"></header>
+
+<section id="gallery">
+  <div class="gallery-outer">
+    <div class="gallery-wrapper">
+      <figure class="gallery-card"><img src="zus 1.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 2.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 3.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 4.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 5.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 6.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 7.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 8.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 9.png" alt="ZUS customer"></figure>
+      <figure class="gallery-card"><img src="zus 10.png" alt="ZUS customer"></figure>
+    </div>
+  </div>
+  <h2 class="tagline">There's no coffee without <span style="color:var(--clr-accent)">U</span></h2>
+</section>
+
+<section id="story" class="story">
+  <p>
+    From the beginning, our dream was always to deliver specialty coffee as a daily necessity for ALL to enjoy. For many, specialty coffee is often seen as a luxury, something you treat yourself to on special occasions. We wanted to change this perception.<br><br>
+    Every ZUS Coffee is a cup of clean, consistent and well-handled coffee. With the best quality ingredients, high-level coffee brewing technology and innovative business model, we are evolving the concept of coffee consumption to make specialty coffee affordable for everyone, everyday.<br><br>
+    With over 39 million cups delivered to date, we only have our ZUSsies to thank for all our achievements thus far. Your amazing loyalty and support are what motivated us to keep our promise to you and ensure that ZUS Coffee is always a Necessity, not a Luxury.
+  </p>
+</section>
+
+<section id="collab" class="collab">
+  <h2 class="tagline">ZUS Coffee <span style="color:var(--clr-accent)">×</span> Collaboration</h2>
+  <div class="collab-grid">
+    <figure class="collab-card" data-name="Zus X Matcha"><img src="colab 1.jpg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Huawei"><img src="colab 2.jpg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Pepsi"><img src="colab 3.webp" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Santan"><img src="colab 4.jpg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Buddy"><img src="colab 5.jpg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Chinese New Year"><img src="colab 6.jpg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Hype"><img src="colab 7.jpeg" alt=""></figure>
+    <figure class="collab-card" data-name="Zus X Inside Scoop"><img src="colab 8.jpg" alt=""></figure>
+  </div>
+</section>
+
+<footer>
+  COPYRIGHT 2025 &copy; ZUS COFFEE<br />
+  Zuspresso (M) Sdn Bhd<br />
+  Company registration no: 201901031000 (1340330-X)
+</footer>
+</body>
+</html>
