@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZUS Coffee Locations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --zus-blue: #002f6c;
+      --zus-gold: #ffd700;
+      --light-bg: #f8f8f8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--light-bg);
+      color: #001f5b;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 150px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links > .nav-item > a,
+    .nav-links > li > a {
+      text-decoration: none;
+      color: var(--zus-blue);
+      font-weight: bold;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      top: 100%;
+      left: 0;
+      min-width: 160px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+      border-radius: 6px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--zus-blue);
+      font-weight: normal;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #eee;
+      font-weight: normal;
+    }
+
+    .nav-item:hover .dropdown-content {
+      display: block;
+    }
+
+    header {
+      background-color: var(--zus-blue);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .filter-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .location-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .location-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .location-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .location-info {
+      padding: 1rem;
+    }
+
+    .location-info h3 {
+      color: var(--zus-blue);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-info a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      background-color: var(--zus-blue);
+      text-align: center;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="homepage.html"><img src="img5.png" alt="ZUS Logo" /></a>
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="#">About</a>
+        <div class="dropdown-content">
+          <a href="story.html">Our Story</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Products</a>
+        <div class="dropdown-content">
+          <a href="menu.html">Menu</a>
+          <a href="merchandise.html">Merchandise</a>
+        </div>
+      </li>
+      <li><a href="location.html">Location</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <h1>ZUS Coffee Locations</h1>
+  <p>Find your nearest ZUS outlet across Malaysia!</p>
+</header>
+
+<!-- Filter -->
+<div class="filter-container">
+  <label for="stateFilter">Filter by State:</label>
+  <select id="stateFilter" onchange="filterLocations()">
+    <option value="all">All</option>
+    <option value="kelantan">Kelantan</option>
+    <option value="terengganu">Terengganu</option>
+    <option value="selangor">Selangor</option>
+    <option value="johor">Johor</option>
+    <option value="penang">Penang</option>
+    <option value="kualalumpur">Kuala Lumpur</option>
+    <option value="negerisembilan">Negeri Sembilan</option>
+    <option value="melaka">Melaka</option>
+    <option value="sabah">Sabah</option>
+  </select>
+</div>
+
+<!-- Locations -->
+<div class="location-grid" id="locationGrid">
+  <div class="location-card" data-state="kelantan">
+    <img src="aeon.jpg" alt="ZUS Kelantan">
+    <div class="location-info">
+      <h3>ZUS Coffee KB Mall, Kelantan</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+KB+Mall+Kelantan" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="terengganu">
+    <img src="ktcc.webp" alt="ZUS Terengganu">
+    <div class="location-info">
+      <h3>ZUS Coffee KTCC Mall, Terengganu</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+KTCC+Mall+Terengganu" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="selangor">
+    <img src="sunway.jpg" alt="ZUS Selangor">
+    <div class="location-info">
+      <h3>ZUS Coffee Sunway Pyramid, Selangor</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+Sunway+Pyramid+Selangor" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="johor">
+    <img src="johor.jpg" alt="ZUS Johor">
+    <div class="location-info">
+      <h3>ZUS Coffee AEON Tebrau, Johor</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+AEON+Tebrau+Johor" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="penang">
+    <img src="penang.webp" alt="ZUS Penang">
+    <div class="location-info">
+      <h3>ZUS Coffee Gurney Plaza, Penang</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+Gurney+Plaza+Penang" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="kualalumpur">
+    <img src="pavi.webp" alt="ZUS Kuala Lumpur">
+    <div class="location-info">
+      <h3>ZUS Coffee Pavilion, Kuala Lumpur</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+Pavilion+Kuala+Lumpur" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="negerisembilan">
+    <img src="ns.webp" alt="ZUS Negeri Sembilan">
+    <div class="location-info">
+      <h3>ZUS Coffee Palm Mall, Negeri Sembilan</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+Palm+Mall+Seremban" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="melaka">
+    <img src="melaka.webp" alt="ZUS Melaka">
+    <div class="location-info">
+      <h3>ZUS Coffee AEON Bandaraya, Melaka</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+AEON+Bandaraya+Melaka" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <div class="location-card" data-state="sabah">
+    <img src="imago.webp" alt="ZUS Sabah">
+    <div class="location-info">
+      <h3>ZUS Coffee Imago Mall, Sabah</h3>
+      <a href="https://maps.google.com/?q=ZUS+Coffee+Imago+Mall+Kota+Kinabalu+Sabah" target="_blank">View on Map</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  COPYRIGHT 2025 &copy; ZUS COFFEE<br />
+  Zuspresso (M) Sdn Bhd<br />
+  Company registration no: 201901031000 (1340330-X)
+</footer>
+
+<script>
+  function filterLocations() {
+    const selectedState = document.getElementById('stateFilter').value;
+    const cards = document.querySelectorAll('.location-card');
+    cards.forEach(card => {
+      const state = card.getAttribute('data-state');
+      card.style.display = (selectedState === 'all' || selectedState === state) ? 'block' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

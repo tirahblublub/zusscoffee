@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZUSS Merch Showcase</title>
+
+  <!-- Google Font & Bootstrap Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #f9f9fc;
+      color: #001f5b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+  .navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: auto;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 150px;
+  object-fit: contain;
+  display: block;
+}
+
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #001f5b;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      border-radius: 6px;
+      min-width: 180px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #001f5b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .nav-item:hover .dropdown-content {
+      display: block;
+    }
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-top: .6rem;
+      color: #333;
+    }
+
+    .tabs {
+      margin: 2.5rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 900px;
+    }
+
+    .tab-btn {
+      padding: .55rem 1.6rem;
+      border: 2px solid #3b6cf4;
+      border-radius: 999px;
+      background: transparent;
+      color: #001f5b;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .3s ease, transform .3s ease;
+    }
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: #3b6cf4;
+      color: #fff;
+    }
+
+    .products {
+      width: 100%;
+      max-width: 1100px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 2px solid #3b6cf4;
+      border-radius: 18px;
+      padding: 2rem 1.5rem 1.8rem;
+      text-align: center;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .15);
+    }
+
+    .card img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 1.2rem;
+      object-fit: contain;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: .3rem;
+      color: #001f5b;
+    }
+
+    .card p {
+      font-size: .95rem;
+      color: #333;
+    }
+
+    footer {
+      background: #001f5b;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .socials a {
+      margin: 0 0.5rem;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="homepage.html"><img src="images/img5.png" alt="ZUS Logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="about.html">About</a>
+          <div class="dropdown-content">
+            <a href="story.html">Our Story</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="products.html">Products</a>
+          <div class="dropdown-content">
+            <a href="menu.html">Menu</a>
+            <a href="merchandise.html">Merchandise</a>
+          </div>
+        </li>
+        <li><a href="location.html">Location</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>ZUSS MERCH SHOWCASE</h1>
+  <p>Sip, Style. Slay. Discover Your Inner ZUSSies Today!</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="filterProducts('new', event)">New In</button>
+    <button class="tab-btn" onclick="filterProducts('drinkware', event)">Drinkware</button>
+    <button class="tab-btn" onclick="filterProducts('coffee', event)">Coffee</button>
+    <button class="tab-btn" onclick="filterProducts('collectibles', event)">Collectibles</button>
+    <button class="tab-btn" onclick="filterProducts('limited', event)">Limited Edition</button>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section class="products">
+
+    <div class="card" data-category="new"><img src="gn1.webp"><h3>ZUS Buddy Mini Plushie Keychain - It's Okay to Feel Emotions - Full Set (6's)</h3><p>RM123.00</p></div>
+    <div class="card" data-category="new"><img src="gn2.webp"><h3>ZUS Buddy Phone Stand</h3><p>RM17.90</p></div>
+    <div class="card" data-category="new"><img src="gn3.webp"><h3>ZUS® Buddy Reusable Straw Set - Full Set</h3><p>RM39.00</p></div>
+    <div class="card" data-category="new"><img src="gn4.webp"><h3>ZUS® Coffizz® On-The-Go Party Kit</h3><p>RM21.00</p></div>
+    <div class="card" data-category="new"><img src="gn5.webp"><h3>ZUS® Coffizz® Last Minute Party Kit</h3><p>RM55.00</p></div>
+    <div class="card" data-category="new"><img src="gn6.webp"><h3>ZUS® Specials Denim Tote</h3><p>RM23.90</p></div>
+
+    <div class="card" data-category="drinkware"><img src="gm1.webp"><h3>ZUS All Day Cup 500ml (17oz)</h3><p>RM79.00</p></div>
+    <div class="card" data-category="drinkware"><img src="gm2.webp"><h3>ZUS Frozee Cold Cup 650ml</h3><p>RM55.00</p></div>
+    <div class="card" data-category="drinkware"><img src="gm3.webp"><h3>ZUS OG CUP 2.0 With Screw-On Lid</h3><p>RM55.00</p></div>
+    <div class="card" data-category="drinkware"><img src="gm4.webp"><h3>ZUS All-Can Tumbler 600ml</h3><p>RM105.00</p></div>
+    <div class="card" data-category="drinkware"><img src="gm5.webp"><h3>ZUS OG Ceramic Mug (16oz)</h3><p>RM39.00</p></div>
+    <div class="card" data-category="drinkware"><img src="gm6.webp"><h3>ZUS Stainless Steel Mug</h3><p>RM41.30</p></div>
+
+    <div class="card" data-category="coffee"><img src="gk1.webp"><h3>ZUS® Ngupi™ Kopi Coklat</h3><p>RM16.90</p></div>
+    <div class="card" data-category="coffee"><img src="gk2.webp"><h3>ZUS® Ngupi™ Kopi Cham</h3><p>RM16.90</p></div>
+    <div class="card" data-category="coffee"><img src="gk3.webp"><h3>ZUS® Ngupi™ White Coffee</h3><p>RM16.90</p></div>
+    <div class="card" data-category="coffee"><img src="gk4.webp"><h3>ZUS® Ngupi™ Kopi O</h3><p>RM16.90</p></div>
+
+    <div class="card" data-category="collectibles"><img src="gb1.webp"><h3>ZUS Coffee Essential Socks</h3><p>RM12.90</p></div>
+    <div class="card" data-category="collectibles"><img src="gb2.webp"><h3>[Kopi Patah Hati] I'm Fine Without You Cap</h3><p>RM47.60</p></div>
+
+    <div class="card" data-category="limited"><img src="ga1.webp"><h3>ZUS CNY Fridge Magnet - Full Set - 6's</h3><p>RM48.00</p></div>
+    <div class="card" data-category="limited"><img src="ga2.webp"><h3>ZUS Essential Sticker Pack</h3><p>RM9.50</p></div>
+    <div class="card" data-category="limited"><img src="ga3.webp"><h3>ZUS Knitted Knot Totebag</h3><p>RM20.00</p></div>
+    <div class="card" data-category="limited"><img src="ga4.webp"><h3>ZUS® Ngupi™ Canvas Bag</h3><p>RM25.00</p></div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>2025 &copy; Zuspresso (M) Sdn Bhd</p>
+  <p>Company registration no: 201901031000 (1340330-X)</p>
+</footer>
+
+<!-- Filter Script -->
+<script>
+  function filterProducts(category, event){
+    const cards=document.querySelectorAll('.card');
+    const buttons=document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn=>btn.classList.remove('active'));
+    event.target.classList.add('active');
+    cards.forEach(card=>{
+      const cat=card.getAttribute('data-category');
+      card.style.display=(cat===category)?'block':'none';
+    });
+  }
+  document.addEventListener('DOMContentLoaded',()=>{
+    filterProducts('new',{target:document.querySelector('.tab-btn.active')});
+  });
+</script>
+</body>
+</html>
+
