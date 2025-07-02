@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZUS Coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --zus-blue: #002f6c;
+      --zus-gold: #ffd700;
+      --light-bg: #f9f9fc;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--light-bg);
+      color: #001f5b;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .logo img { height: 150px; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      color: #001f5b;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+     color: #007BFF
+   }
+
+    .nav-item { position: relative; }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      border-radius: 6px;
+      min-width: 180px;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #001f5b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+    .nav-item:hover .dropdown-content {
+      display: block;
+    }
+
+    .hero-banner {
+      position: relative;
+      text-align: center;
+      align-items: center;
+      max-width: 5000px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .hero-banner img {
+      width: 150%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      padding: 0 1rem;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #0054A6;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .menu-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .menu-item:hover { transform: translateY(-5px); }
+    .menu-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .item-name {
+      color: var(--zus-blue);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .item-price { color: #666; }
+    footer {
+      background: #001f5b;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="homepage.html"><img src="img5.png" alt="ZUS Logo" /></a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="about.html">About</a>
+          <div class="dropdown-content">
+            <a href="story.html">Our Story</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="products.html">Products</a>
+          <div class="dropdown-content">
+            <a href="menu.html">Menu</a>
+            <a href="merchandise.html">Merchandise</a>
+          </div>
+        </li>
+        <li><a href="location.html">Location</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-banner">
+    <img src="header.jpg" alt="header">
+    <div class="hero-text">Discover Your Daily Boost ✨</div>
+  </div>
+
+  <!-- Menu Section -->
+  <section id="menu">
+    <h2>🍵 Meowtcha Series</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="matchalemon.jpg"><div class="item-name">Matcha Lemonade</div><div class="item-price">RM 10.20</div></div>
+      <div class="menu-item"><img src="matchastraw.jpg"><div class="item-name">Matcha Strawberry Latté</div><div class="item-price">RM 14.20</div></div>
+      <div class="menu-item"><img src="matchalatte.jpg"><div class="item-name">Matcha Latté</div><div class="item-price">RM 12.20</div></div>
+      <div class="menu-item"><img src="matchajasmine.jpg"><div class="item-name">Matcha Jasmine Latté</div><div class="item-price">RM 13.20</div></div>
+    </div>
+    <br>
+    <h2>🥤 Frappe</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="strawberry.jpg"><div class="item-name">Cheese Creme Strawberry Frappe</div><div class="item-price">RM 15.90</div></div>
+      <div class="menu-item"><img src="doublechoc.jpg"><div class="item-name">Double Chocolate Chip Frappe</div><div class="item-price">RM 15.90</div></div>
+      <div class="menu-item"><img src="spanishlattef.jpg"><div class="item-name">Spanish Latte Frappe</div><div class="item-price">RM 15.90</div></div>
+      <div class="menu-item"><img src="watermelon.jpg"><div class="item-name">Watermelon Frappe</div><div class="item-price">RM 15.20</div></div>
+    </div>
+    <br>
+    <h2>🥐 Pastries</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="5.jpg"><div class="item-name">Pearl Sugar Waffle</div><div class="item-price">RM 6.90</div></div>
+      <div class="menu-item"><img src="6.jpg"><div class="item-name">Garlic Cream Cheese Bagel</div><div class="item-price">RM 8.90</div></div>
+      <div class="menu-item"><img src="7.jpg"><div class="item-name">Garlic Cream Croissant</div><div class="item-price">RM 8.90</div></div>
+      <div class="menu-item"><img src="8.jpg"><div class="item-name">Triple Chocolate Muffin</div><div class="item-price">RM 9.90</div></div>
+    </div>
+    <br>
+    <h2>☕ Classic</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="9.jpg"><div class="item-name">Hot Flat White</div><div class="item-price">RM 10.20</div></div>
+      <div class="menu-item"><img src="10.jpg"><div class="item-name">Cappuccino</div><div class="item-price">RM 10.20</div></div>
+      <div class="menu-item"><img src="11.jpg"><div class="item-name">Caramel Macchiato</div><div class="item-price">RM 12.90</div></div>
+      <div class="menu-item"><img src="12.jpg"><div class="item-name">Americano</div><div class="item-price">RM 6.90</div></div>
+    </div>
+    <br>
+    <h2>🥤 Cremé Series</h2>
+    <div class="menu-grid">
+      <div class="menu-item"><img src="1.jpg"><div class="item-name">Iced Cheese Cremé Caramel Matcha</div><div class="item-price">RM 14.20</div></div>
+      <div class="menu-item"><img src="2.jpg"><div class="item-name">Iced Buttercremé Strawberry Latte</div><div class="item-price">RM 14.20</div></div>
+      <div class="menu-item"><img src="3.jpg"><div class="item-name">Velvet Cremé Latte</div><div class="item-price">RM 14.20</div></div>
+      <div class="menu-item"><img src="4.jpg"><div class="item-name">Iced Buttercremé Spanish Latte</div><div class="item-price">RM 13.20</div></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+  COPYRIGHT 2025 &copy; ZUS COFFEE<br />
+  Zuspresso (M) Sdn Bhd<br />
+  Company registration no: 201901031000 (1340330-X)
+  </footer>
+</body>
+</html>
